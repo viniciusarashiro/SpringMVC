@@ -1,6 +1,7 @@
 package br.com.codelab.regescweb.controllers;
 
 import br.com.codelab.regescweb.models.Professor;
+import br.com.codelab.regescweb.models.StatusProfessor;
 import br.com.codelab.regescweb.repositories.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,13 @@ public class ProfessorController {
         ModelAndView mv = new ModelAndView("professores/index");
         mv.addObject("professores", professores);
 
+        return mv;
+    }
+
+    @GetMapping("/professor/new")
+    public ModelAndView nnew() {
+        ModelAndView mv = new ModelAndView("professores/new");
+        mv.addObject("statusProfessor", StatusProfessor.values());
         return mv;
     }
  }
