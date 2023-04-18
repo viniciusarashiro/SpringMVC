@@ -1,5 +1,6 @@
 package br.com.codelab.regescweb.controllers;
 
+import br.com.codelab.regescweb.dto.RequisicaoNovoProfessor;
 import br.com.codelab.regescweb.models.Professor;
 import br.com.codelab.regescweb.models.StatusProfessor;
 import br.com.codelab.regescweb.repositories.ProfessorRepository;
@@ -36,10 +37,9 @@ public class ProfessorController {
     }
 
     @PostMapping("/professores")
-    public String create(Professor professor) {
-        System.out.println();
-        System.out.println(professor);
-        System.out.println();
+    public String create(RequisicaoNovoProfessor requisicao) {
+        Professor professor = requisicao.toProfessor();
+        this.professorRepository.save(professor);
         return "redirect:/professores";
     }
  }
