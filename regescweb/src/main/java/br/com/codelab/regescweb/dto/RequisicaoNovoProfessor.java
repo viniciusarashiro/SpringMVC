@@ -2,11 +2,18 @@ package br.com.codelab.regescweb.dto;
 
 import br.com.codelab.regescweb.models.Professor;
 import br.com.codelab.regescweb.models.StatusProfessor;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 public class RequisicaoNovoProfessor {
+    @NotBlank
+    @NotNull
     private String nome;
+    @NotNull
+    @DecimalMin(value="0.0",inclusive=false)
     private BigDecimal salario;
     private StatusProfessor statusProfessor;
 
