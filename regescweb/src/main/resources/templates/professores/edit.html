@@ -1,8 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragmentos :: head('Novo professor')}"></head>
+<head th:replace="~{fragmentos :: head('Editar professor')}"></head>
 <body>
-<header th:replace="~{fragmentos :: header('Novo professor')}"></header>
+<header th:replace="~{fragmentos :: header('Editar professor #' + ${professorId})}"></header>
 <div class="container">
     <div class="container">
         <div class="row">
