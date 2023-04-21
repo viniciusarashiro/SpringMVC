@@ -28,7 +28,6 @@ public class ProfessorController {
     @GetMapping("")
     public ModelAndView index() {
 
-
         List<Professor> professores = this.professorRepository.findAll();
 
         ModelAndView mv = new ModelAndView("professores/index");

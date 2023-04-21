@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: head('Lista de cursos')}"></head>
+<body>
+<header th:replace="~{fragmentos :: header('Lista de cursos')}"></header>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tipo</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+          <th class="col-1" scope="row" th:text="${curso.getCodigo()}">Código</th>
+          <td class="col-4" th:text="${curso.nome}">Nome do Curso</td>
+          <td class="col-2" th:text="${curso.descricao}">Descrição</td>
+          <td class="col-2" th:text="${curso.tipoCurso.toString()}">TIPO</td>
+          <td class="col-1"><a th:href="@{/cursos/{cursoCodigo}(cursoCodigo = ${curso.codigo})}">Detalhes</a></td>
+          <td class="col-1"><a th:href="@{/cursos/{cursoCodigo}/edit(cursoCodigo = ${curso.codigo})}">Editar</a></td>
+          <td class="col-1"><a th:href="@{/cursos/{cursoCodigo}/delete(cursoCodigo = ${curso.codigo})}">Deletar</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <a href="/cursos/new">Novo Curso</a>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</html>
