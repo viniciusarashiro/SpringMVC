@@ -6,6 +6,7 @@ import br.com.codelab.regescweb.models.StatusProfessor;
 import br.com.codelab.regescweb.repositories.ProfessorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -110,6 +111,17 @@ public class ProfessorController {
             } else {
                 return new ModelAndView("redirect:/professores");
             }
+        }
+    }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        try {
+            this.professorRepository.deleteById(id);
+            return "redirect:/professores";
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println(e);
+            return "redirect:/professores";
         }
     }
 
